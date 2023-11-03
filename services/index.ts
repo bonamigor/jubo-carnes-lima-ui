@@ -11,11 +11,11 @@ import UsuarioService from './usuario'
 
 const API_ENVS = {
   local: 'http://localhost:3001',
-  production: 'url aqui'
+  production: 'https://jubo-paraiso-ribeiro-api-production.up.railway.app/'
 }
 
 const httpClient = axios.create({
-  baseURL: API_ENVS.production
+  baseURL: API_ENVS.local
 })
 
 httpClient.interceptors.request.use(config => {

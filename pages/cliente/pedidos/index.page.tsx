@@ -1,14 +1,14 @@
-import { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import BloomImg from '../../../assets/bloom.png';
-import DeleteImg from '../../../assets/delete.png';
-import CancelOrder from "../../../components/Modal/CancelOrder/index.page";
-import OrderInfo from "../../../components/Modal/Cliente/OrderInfo/index.page";
-import { pedidoService } from '../../../services/index';
-import { PedidosProps } from "../../../services/pedido";
-import { Container, Content, InputFilter, TableContainer } from "./pedidos";
+import { NextPage } from "next"
+import Head from "next/head"
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import BloomImg from '../../../assets/bloom.png'
+import DeleteImg from '../../../assets/delete.png'
+import CancelOrder from "../../../components/Modal/CancelOrder/index.page"
+import OrderInfo from "../../../components/Modal/Cliente/OrderInfo/index.page"
+import { pedidoService } from '../../../services/index'
+import { PedidosProps } from "../../../services/pedido"
+import { Container, Content, InputFilter, TableContainer } from "./pedidos"
 
 const Pedidos: NextPage = () => {
   const [pedidos, setPedidos] = useState<PedidosProps[]>([])
@@ -57,7 +57,7 @@ const Pedidos: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Titulo Aqui - Pedidos</title>
+        <title>Paraíso Ribeiro - Pedidos</title>
       </Head>    
       <Container>
         <Content>

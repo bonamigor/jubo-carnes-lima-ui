@@ -65,8 +65,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Titulo Aqui</title>
-        <meta name="description" content="Titulo Aqui p/ Merenda Escolar" />
+        <title>Paraíso Ribeiro</title>
+        <meta name="description" content="Paraíso Ribeiro p/ Merenda Escolar" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeStyle>
@@ -85,8 +85,9 @@ const Home: NextPage = () => {
             </div>
             <footer>
               <p>Dúvidas?</p>
-              <p>(XX) XXXXX-XXXX / (XX) XXXX-XXXX</p>
-              <p><a href="mailto:xxxxxx@hotmail.com">email.exemplo@gmail.com</a></p>
+              <p>(62) 99166-9903 / (62) 3387-4156</p>
+              <p><a href="mailto:paraisodascarnes56@gmail.com">paraisodascarnes56@gmail.com</a></p>
+              <p><a href="mailto:casadecarnesribeiro@hotmail.com.br">casadecarnesribeiro@hotmail.com.br</a></p>
             </footer>
           </LeftContent>
           <RightContent>
