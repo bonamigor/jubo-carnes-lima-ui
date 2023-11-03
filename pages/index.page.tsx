@@ -1,13 +1,13 @@
+import { Loading } from '@nextui-org/react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useRouter } from 'next/router';
-import { FormEvent, useState } from 'react';
-import { Box, HomeStyle, LeftContent, LoginForm, RightContent } from './home';
-import { auth } from '../services/index';
-import { useUser } from '../hooks/useUser';
-import toast from 'react-hot-toast';
-import { useMutation } from 'react-query';
-import { Loading } from '@nextui-org/react';
+import { useRouter } from 'next/router'
+import { FormEvent, useState } from 'react'
+import toast from 'react-hot-toast'
+import { useMutation } from 'react-query'
+import { useUser } from '../hooks/useUser'
+import { auth } from '../services/index'
+import { Box, HomeStyle, LeftContent, LoginForm, RightContent } from './home'
 
 const Home: NextPage = () => {
   const [email, setEmail] = useState('')
@@ -65,8 +65,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Jubo Notas</title>
-        <meta name="description" content="Jubo Notas p/ Merenda Escolar" />
+        <title>Titulo Aqui</title>
+        <meta name="description" content="Titulo Aqui p/ Merenda Escolar" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeStyle>
@@ -85,8 +85,8 @@ const Home: NextPage = () => {
             </div>
             <footer>
               <p>Dúvidas?</p>
-              <p>(62) 99155-4437 / (62) 3091-5471</p>
-              <p><a href="mailto:mendesalimentos@hotmail.com">mendesalimentos@hotmail.com</a></p>
+              <p>(XX) XXXXX-XXXX / (XX) XXXX-XXXX</p>
+              <p><a href="mailto:xxxxxx@hotmail.com">email.exemplo@gmail.com</a></p>
             </footer>
           </LeftContent>
           <RightContent>

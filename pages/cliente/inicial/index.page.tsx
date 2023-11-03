@@ -1,14 +1,14 @@
 import { NextPage } from "next";
-import { Container, Content, Observacao, TableContainer } from "./inicial";
-import { useState, useEffect } from 'react';
-import { pedidoService } from '../../../services/index';
-import Image from "next/image";
-import BloomImg from '../../../assets/bloom.png'
-import DeleteImg from '../../../assets/delete.png'
-import OrderInfo from "../../../components/Modal/Cliente/OrderInfo/index.page";
 import Head from "next/head";
+import Image from "next/image";
+import { useEffect, useState } from 'react';
+import BloomImg from '../../../assets/bloom.png';
+import DeleteImg from '../../../assets/delete.png';
 import CancelOrder from "../../../components/Modal/CancelOrder/index.page";
+import OrderInfo from "../../../components/Modal/Cliente/OrderInfo/index.page";
+import { pedidoService } from '../../../services/index';
 import { PedidosProps } from "../../../services/pedido";
+import { Container, Content, Observacao, TableContainer } from "./inicial";
 
 
 const Inicial: NextPage = () => {
@@ -54,7 +54,7 @@ const Inicial: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Jubo Notas - Início</title>
+        <title>Titulo Aqui - Início</title>
       </Head>
       <Observacao>
         <h1>OBS.: Faça o seu pedido com no mínimo 5 dias úteis <br />de antecedência da data de entrega desejada.</h1>
