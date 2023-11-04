@@ -1,14 +1,14 @@
-import logoImg from '../../assets/logo.png' 
-import Image from 'next/image';
+import Image from 'next/image'
+import logoImg from '../../assets/logo.png'
 
-import { NextPage } from "next";
-import { Container, Content, DropdownMenuItem, Logo, Menu, MenuItem } from './navbar';
-import LogginButton from '../LoginButton/index.page';
-import { useRouter } from 'next/router';
-import { useUser } from '../../hooks/useUser';
-import { usePedido } from '../../hooks/usePedido';
-import { Dropdown } from '@nextui-org/react';
-import Link from 'next/link';
+import { Dropdown } from '@nextui-org/react'
+import { NextPage } from "next"
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { usePedido } from '../../hooks/usePedido'
+import { useUser } from '../../hooks/useUser'
+import LogginButton from '../LoginButton/index.page'
+import { Container, Content, DropdownMenuItem, Logo, Menu, MenuItem } from './navbar'
 
 interface NavbarProps {
   isUserLoggedIn: boolean;
@@ -33,8 +33,8 @@ const Navbar: NextPage<NavbarProps> = ({ isUserLoggedIn }) => {
       <Container>
         <Content>
           <Logo>
-            <Image src={logoImg} alt="Jubo" width={50} height={40}/>
-            <h1>Jubo</h1>
+            <Image src={logoImg} alt="Paraíso das Carnes" width={50} height={40}/>
+            <h1>Paraíso das Carnes</h1>
           </Logo>
           {isAdmin ? (
             <Menu>
