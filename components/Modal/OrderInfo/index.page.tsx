@@ -35,6 +35,7 @@ interface OrderInfoModalProps {
 }
 
 interface EmpresaProps {
+  attribute: string;
   nome: string;
   cnpj: string;
   endereco: string;
@@ -44,6 +45,7 @@ interface EmpresaProps {
 
 const empresas: Array<EmpresaProps> = [
   {
+    attribute: 'paraiso',
     nome: 'Distribuidora de Alimentos Paraíso LTDA',
     cnpj: '47.443.514/0001-85',
     endereco: 'Pç. Sebastião Silva, S/N, Sala 1, Qd. 53 Lt. 3, PARAISO, CEP: 75.134-360',
@@ -51,6 +53,8 @@ const empresas: Array<EmpresaProps> = [
     estado: 'Goiás'
   },
   {
+
+    attribute: 'supermercado-ribeiro',
     nome: 'Supermercado Ribeiro',
     cnpj: '01.761.787/0001-77',
     endereco: 'Av. Cachoeira Dourada, nº 650, Paraíso, CEP: 75.134-387',
@@ -530,30 +534,16 @@ const OrderInfo: NextPage<OrderInfoModalProps> = ({ isOpen, onRequestClose, pedi
                   <button onClick={generatePdf}>Criar PDF</button>
                 </div>
                 <div id='empresa'>
-                  <label htmlFor="mendes">
-                    <input type="radio" name="mendes" id="mendes" value="0" onChange={handleOptionEmpresa} />
-                    Mendes
-                  </label>
-                  <label htmlFor="coperal">
-                    <input type="radio" name="coperal" id="coperal" value="1" onChange={handleOptionEmpresa} />
-                    COPERAL
-                  </label>
-                  <label htmlFor="coopassen">
-                    <input type="radio" name="coopassen" id="coopassen" value="2" onChange={handleOptionEmpresa} />
-                    COOPASSEN
-                  </label>
-                  <label htmlFor="coopaco">
-                    <input type="radio" name="coopaco" id="coopaco" value="3" onChange={handleOptionEmpresa} />
-                    COOPACO
-                  </label>
-                  <label htmlFor="compaf">
-                    <input type="radio" name="compaf" id="compaf" value="4" onChange={handleOptionEmpresa} />
-                    COMPAF
-                  </label>
-                  <label htmlFor="coopanira">
-                    <input type="radio" name="coopanira" id="coopanira" value="5" onChange={handleOptionEmpresa} />
-                    COOPANIRA
-                  </label>
+                {
+                  empresas.map((empresa, index) => {
+                    return (
+                      <label key={empresa.attribute} htmlFor={empresa.attribute}>
+                        <input type="radio" name={empresa.attribute} id={empresa.attribute} value={index} onChange={handleOptionEmpresa} />
+                        {empresa.nome}
+                      </label>
+                    )
+                  })
+                }
                 </div>
               </ConfirmSection>
               <CancelSection>
