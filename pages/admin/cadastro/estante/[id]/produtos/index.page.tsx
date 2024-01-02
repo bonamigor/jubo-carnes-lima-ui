@@ -1,19 +1,18 @@
-import { NextPage } from "next";
-import { useRouter } from "next/router";
-import { Container, Content, FormButton, FormItself, FormSubmitButton, InputFilter, TableContainer } from "./estanteProduto";
-import { useState, useEffect, FormEvent } from 'react';
-import { ProdutoProps } from '../../../produto/index.page';
-import { produtoService } from "../../../../../../services";
-import toast from "react-hot-toast";
-import { produtoEstanteService } from '../../../../../../services/index';
-import Image from "next/image";
-import EditImg from '../../../../../../assets/edit.png'
+import { NextPage } from "next"
+import Head from "next/head"
+import Image from "next/image"
+import { useRouter } from "next/router"
+import { FormEvent, useEffect, useState } from 'react'
+import toast from "react-hot-toast"
+import { useQuery, useQueryClient } from "react-query"
 import ConfirmImg from '../../../../../../assets/confirm.png'
-import DeleteModal from "../../../../../../components/Modal/Delete/index.page";
-import { useQuery, useQueryClient } from "react-query";
-import Head from "next/head";
-import Pagination from "../../../../../../components/Pagination/index.page";
-import UpdateStatus from "../../../../../../components/Modal/UpdateStatus/index.page";
+import EditImg from '../../../../../../assets/edit.png'
+import UpdateStatus from "../../../../../../components/Modal/UpdateStatus/index.page"
+import Pagination from "../../../../../../components/Pagination/index.page"
+import { produtoService } from "../../../../../../services"
+import { produtoEstanteService } from '../../../../../../services/index'
+import { ProdutoProps } from '../../../produto/index.page'
+import { Container, Content, FormButton, FormItself, FormSubmitButton, InputFilter, TableContainer } from "./estanteProduto"
 
 export interface EstanteProdutoProps {
   produtoId: number;
@@ -118,7 +117,7 @@ const EstanteProduto: NextPage = () => {
       const { errors } = await produtoEstanteService.atualizarProdutoNaEstante({
         idEstante: Number(id),
         idProduto: Number(produtoId.split(' ')[0]),
-        precoVenda: precoVenda,
+        precoVenda: precoVenda.replaceAll(',', '.'),
         quantidade: quantidade
       })
 
