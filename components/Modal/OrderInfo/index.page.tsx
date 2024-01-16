@@ -47,6 +47,7 @@ interface EmpresaProps {
 const empresas: Array<EmpresaProps> = [
   {
     attribute: 'paraiso',
+    displayName: 'Distribuidora de Alimentos Paraíso LTDA',
     nome: 'Distribuidora de Alimentos Paraíso LTDA',
     cnpj: '47.443.514/0001-85',
     endereco: 'Pç. Sebastião Silva, S/N, Sala 1, Qd. 53 Lt. 3, PARAISO, CEP: 75.134-360',
@@ -54,8 +55,8 @@ const empresas: Array<EmpresaProps> = [
     estado: 'Goiás'
   },
   {
-
     attribute: 'supermercado-ribeiro',
+    displayName: 'Supermercado Ribeiro',
     nome: 'Supermercado Ribeiro',
     cnpj: '01.761.787/0001-77',
     endereco: 'Av. Cachoeira Dourada, nº 650, Paraíso, CEP: 75.134-387',
