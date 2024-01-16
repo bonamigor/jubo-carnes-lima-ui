@@ -35,6 +35,7 @@ const PedidoProdutos: NextPage = () => {
   const [produtos, setProdutos] = useState<ProdutoNoPedidoProps[]>([])
   const [produtoId, setProdutoId] = useState('')
   const [quantidade, setQuantidade] = useState('')
+  const [quantidadeAntiga, setQuantidadeAntiga] = useState('')
   const [cliente, setCliente] = useState({ 
     id: 0,
     nome: '',
@@ -124,6 +125,7 @@ const PedidoProdutos: NextPage = () => {
   const prepareUpdate = async (produto: ProdutoNoPedidoProps) => {
     setProdutoId(`${produto.itemPedidoId} - ${produto.produtoId} . ${produto.nome} - R$ ${produto.precoVenda}/${produto.unidade}`)
     setQuantidade(String(produto.quantidade))
+    setQuantidadeAntiga(produto.quantidade.split('.')[0])
     setIsUpdate(true)
   }
 
@@ -138,7 +140,8 @@ const PedidoProdutos: NextPage = () => {
         pedidoId: Number(pedidoId),
         itemPedidoId: Number(itemPedidoId),
         precoVenda: Number(produtoId.split('R$')[1].split('/')[0].trim().replaceAll(',', '.')),
-        quantidade: Number(quantidade.replaceAll(',', '.'))
+        quantidadeNova: Number(quantidade.replaceAll('.', '').replaceAll(',', '.')),
+        quantidadeAntiga: Number(quantidadeAntiga.replaceAll('.', '').replaceAll(',', '.'))
       })
 
       if (!errors) {

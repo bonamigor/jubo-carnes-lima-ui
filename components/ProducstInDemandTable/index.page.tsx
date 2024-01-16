@@ -1,16 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { NextPage } from 'next';
-import { CancelButton, ConfirmButton, DecideButtons, TableContainer, TableFooter, TableTitle } from './productsInDemand';
-import Image from "next/image";
-import EditImg from '../../assets/edit.png'
+import { Textarea } from '@nextui-org/react'
+import { NextPage } from 'next'
+import Image from "next/image"
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import DeleteImg from '../../assets/delete.png'
-import { useState, useEffect } from 'react';
-import { pedidoService } from '../../services';
-import DeleteModal from '../Modal/Delete/index.page';
-import { useRouter } from 'next/router';
-import { useQuery } from 'react-query';
-import { Textarea } from '@nextui-org/react';
-import toast from 'react-hot-toast';
+import EditImg from '../../assets/edit.png'
+import { pedidoService } from '../../services'
+import DeleteModal from '../Modal/Delete/index.page'
+import { CancelButton, ConfirmButton, DecideButtons, TableContainer, TableFooter, TableTitle } from './productsInDemand'
 
 interface ProductsProps {
   itemPedidoId: string;
@@ -72,7 +71,7 @@ const ProductsInDemandTable: NextPage<ProductsInDemandProps> = ({ prepareUpdate,
   }, [product, valorTotal])
 
   const handleDeleteItemPedido = (produtoParaDeletar: ProductsProps) => {
-    setIdItemPedido(`${produtoParaDeletar.itemPedidoId} ${pedidoId}`)
+    setIdItemPedido(`${produtoParaDeletar.itemPedidoId} ${pedidoId} ${produtoParaDeletar.quantidade} ${estanteId} ${produtoParaDeletar.produtoId}`)
     const index = products.findIndex(product => product.itemPedidoId === produtoParaDeletar.itemPedidoId)
     delete products[index]
     setIsDeleteItemPedidoModalOpen(true)

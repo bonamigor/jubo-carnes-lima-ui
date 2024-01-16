@@ -1,12 +1,12 @@
 
+import { NextPage } from "next"
+import { useRouter } from 'next/router'
+import toast from 'react-hot-toast'
 import Modal from 'react-modal'
-import { NextPage } from "next";
-import { clienteService, produtoService } from '../../../services';
-import toast from 'react-hot-toast';
-import { Buttons, Container, Content } from './delete';
-import { usuarioService, estanteService, pedidoService, itemPedidoService, produtoEstanteService } from '../../../services/index';
-import { useUser } from '../../../hooks/useUser';
-import { useRouter } from 'next/router';
+import { useUser } from '../../../hooks/useUser'
+import { clienteService, produtoService } from '../../../services'
+import { estanteService, itemPedidoService, pedidoService, produtoEstanteService, usuarioService } from '../../../services/index'
+import { Buttons, Container, Content } from './delete'
 
 interface DeleteModalProps {
   isOpen: boolean;
