@@ -46,59 +46,22 @@ interface EmpresaProps {
 
 const empresas: Array<EmpresaProps> = [
   {
-    attribute: 'kidelicia',
-    displayName: 'Kidelicia',
-    nome: 'Panificadora e Lanchonete Kidelicia',
-    cnpj: '02.895.623/0001-03',
-    endereco: 'Rua Pinheiro Chagas, 171, Setor Sudoeste, 74303-035',
-    cidade: 'Goiânia',
+    attribute: 'paraiso',
+    nome: 'Distribuidora de Alimentos Paraíso LTDA',
+    cnpj: '47.443.514/0001-85',
+    endereco: 'Pç. Sebastião Silva, S/N, Sala 1, Qd. 53 Lt. 3, PARAISO, CEP: 75.134-360',
+    cidade: 'Anápolis',
     estado: 'Goiás'
   },
   {
-    attribute: 'coperal',
-    displayName: 'COPERAL',
-    nome: 'COPERAL',
-    cnpj: '46.258.870/0001-66',
-    endereco: 'Rua 26 de setembro, nº 21, lt. 23, Setor Estrela Dalva',
-    cidade: 'Goiânia',
+
+    attribute: 'supermercado-ribeiro',
+    nome: 'Supermercado Ribeiro',
+    cnpj: '01.761.787/0001-77',
+    endereco: 'Av. Cachoeira Dourada, nº 650, Paraíso, CEP: 75.134-387',
+    cidade: 'Anápolis',
     estado: 'Goiás'
   },
-  {
-    attribute: 'coopassen',
-    displayName: 'COOPASSEN',
-    nome: 'COOPASSEN',
-    cnpj: '36.070.538/0001-10',
-    endereco: 'R. Padre Alcides Spolidoro, S/N, Q. I4 L. 11/12, Dist Ind Santa Edwiges',
-    cidade: 'Senador Canedo',
-    estado: 'Goiás'
-  },
-  {
-    attribute: 'coopaco',
-    displayName: 'COOPACO',
-    nome: 'COOPACO',
-    cnpj: '33.507.873/0001-44',
-    endereco: 'Rua 03, QD. 07, LT. 13, Sala 03, Recanto das Emboabas',
-    cidade: 'Aparecida de Goiânia',
-    estado: 'Goiás'
-  },
-  {
-    attribute: 'compaf',
-    displayName: 'COMPAF',
-    nome: 'COMPAF',
-    cnpj: '29.119.413/0001-71',
-    endereco: 'ROD GO-320 KM 10.5 n 100, LT. 11 QD. 03, RES BOA ESPERANCA',
-    cidade: 'Goiatuba',
-    estado: 'Goiás'
-  },
-  {
-    attribute: 'coopanira',
-    displayName: 'COOPANIRA',
-    nome: 'COOPANIRA',
-    cnpj: '50.702.609/0001-80',
-    endereco: 'Rua José Caitano Leal, Quadra 17, Lote 33, Setor Sul',
-    cidade: 'Goianira',
-    estado: 'Goiás'
-  }
 ]
 
 const OrderInfo: NextPage<OrderInfoModalProps> = ({ isOpen, onRequestClose, pedido }) => {
