@@ -3,7 +3,6 @@ import { Container, Content, Buttons } from './cancelOrder';
 import Modal from 'react-modal'
 import toast from 'react-hot-toast';
 import { pedidoService } from '../../../services';
-import { useRouter } from 'next/router';
 import { Textarea } from '@nextui-org/react';
 import { useState } from 'react';
 import { PedidosProps } from '../../../services/pedido';
@@ -15,7 +14,6 @@ interface CancelOrderModalProps {
 }
 
 const CancelOrder: NextPage<CancelOrderModalProps> = ({ isOpen, onRequestClose, pedido }) => {
-  const router = useRouter()
   const [observacao, setObservacao] = useState('')
 
   const handleCancelOrder = async (pedido: PedidosProps) => {
@@ -24,7 +22,6 @@ const CancelOrder: NextPage<CancelOrderModalProps> = ({ isOpen, onRequestClose, 
     if (!errors) {
       onRequestClose()
       toast.success(data.message ?? 'Pedido cancelado com sucesso!')
-      router.reload()
     } else {
       toast.error(errors.statusText ?? 'Erro ao cancelar pedido.')
     }

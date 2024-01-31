@@ -3,7 +3,6 @@ import { Container, Content, Buttons } from './confirmOrder';
 import Modal from 'react-modal'
 import toast from 'react-hot-toast';
 import { pedidoService } from '../../../services';
-import { useRouter } from 'next/router';
 import { PedidosProps } from '../../../services/pedido';
 
 interface ConfirmOrderModalProps {
@@ -13,15 +12,12 @@ interface ConfirmOrderModalProps {
 }
 
 const ConfirmOrder: NextPage<ConfirmOrderModalProps> = ({ isOpen, onRequestClose, pedido }) => {
-  const router = useRouter()
-
   const handleConfirmOrder = async (pedido: PedidosProps) => {
     const { data, errors } = await pedidoService.setarPedidoComoEntregue(pedido.id)
 
     if (!errors) {
       onRequestClose()
       toast.success(data.message ?? 'Pedido entregue com sucesso!')
-      router.reload()
     } else {
       toast.error(errors.statusText ?? 'Erro ao alterar status do pedido.')
     }

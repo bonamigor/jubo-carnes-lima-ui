@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useState } from 'react'
-import { useQuery } from 'react-query'
+import { useQuery, useQueryClient } from 'react-query'
 import AlertImg from '../../../assets/alert.png'
 import BloomImg from '../../../assets/bloom.png'
 import TruckImg from '../../../assets/truck.png'
@@ -15,11 +15,16 @@ import { Container, Filter, InputFilter, LeftPanel, LoadingDiv, NoContent, Right
 const Dashboard: NextPage = () => {
   const [pedido, setPedido] = useState<PedidosProps>({ id: 0, dataCriacao: 0, dataEntrega: 0, valorTotal: 0, status: '', observacao: '', obsCancelamento: '', nome: '', endereco: '', cidade: '', estado: '', telefone: '', isFinalizado: 0 })
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const queryClient = useQueryClient()
   const [filter, setFilter] = useState('')
   const [filteredPedidos, setFilteredPedidos] = useState<PedidosProps[]>([])
 
+  const { data: pedidosObject, isLoading: isPedidosObjectLoading, isSuccess, isFetching } = useQuery<PedidosObject, Error>('getPedidosForDashboard', pedidoService.listarPedidos, { staleTime: 1000 * 60 * 15, refetchOnWindowFocus: true })
+  const { data: tomorrowPedidosObject } = useQuery<PedidosObject, Error>('getTomorrowPedidosForDashboard', pedidoService.listarPedidosDeAmanha, { staleTime: 1000 * 60 * 15 })
+
   const onRequestClose = async () => {
     setIsModalOpen(false)
+    queryClient.invalidateQueries('getPedidosForDashboard')
   }
 
   const viewOrderInfo = async (pedido: PedidosProps) => {
@@ -27,9 +32,7 @@ const Dashboard: NextPage = () => {
     setIsModalOpen(true)
   }
 
-  const { data: pedidosObject, isLoading: isPedidosObjectLoading, isSuccess, isFetching } = useQuery<PedidosObject, Error>('getPedidosForDashboard', pedidoService.listarPedidos, { staleTime: 1000 * 60 * 15, refetchOnWindowFocus: true })
-  const { data: tomorrowPedidosObject } = useQuery<PedidosObject, Error>('getTomorrowPedidosForDashboard', pedidoService.listarPedidosDeAmanha, { staleTime: 1000 * 60 * 15 })
-
+  
   const handleFilterPedidosByCliente = (event: any) => {
     setFilter(event.toUpperCase())
     setFilteredPedidos(pedidosObject!.pedidos.filter((pedido: PedidosProps) => {

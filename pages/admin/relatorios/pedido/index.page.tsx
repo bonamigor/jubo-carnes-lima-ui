@@ -42,6 +42,14 @@ const Pedido: NextPage = () => {
   const [isConfirmOrderModalOpen, setIsConfirmOrderModalOpen] = useState(false)
   const [pedido, setPedido] = useState<Pedido>({ id: 0, dataCriacao: 0, dataEntrega: 0, valorTotal: 0, status: '', observacao: '', obsCancelamento: '', nome: '', endereco: '', cidade: '', estado: '', telefone: '', isFinalizado: 0 })
   const [pedidoId, setPedidoId] = useState(0)
+
+  const fetchPedidoById = async () => {
+    const { data, errors } = await pedidoService.listarPedidoById(pedidoId)
+    if (!errors) {
+      setPedido(data.pedido[0])
+      setIsOrdersLoading(false)
+    }
+  }
   
   const handlePedidoByIdSearch = async () => {
     setIsOrdersLoading(true)
@@ -54,14 +62,20 @@ const Pedido: NextPage = () => {
 
   const onRequestClose = async () => {
     setIsModalOpen(false)
+
+    await fetchPedidoById()
   }
 
   const onRequestCloseCancelOrder = async () => {
     setIsCancelOrderModalOpen(false)
+
+    await fetchPedidoById()
   }
 
   const onRequestCloseConfirmOrder = async () => {
     setIsConfirmOrderModalOpen(false)
+
+    await fetchPedidoById()
   } 
 
   const handleConfirmOrder = async (pedido: Pedido) => {
@@ -81,6 +95,8 @@ const Pedido: NextPage = () => {
 
   const onRequestCloseChangeDate = async () => {
     setIsChangeDateModalOpen(false)
+
+    await fetchPedidoById()
   } 
 
   const handleChangeDate = async (pedido: Pedido) => {
@@ -95,6 +111,8 @@ const Pedido: NextPage = () => {
 
   const onRequestCloseObs = async () => {
     setIsModalObsOpen(false)
+
+    await fetchPedidoById()
   } 
 
   return (

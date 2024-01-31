@@ -3,8 +3,7 @@ import { Container, Content, Buttons, ObservacaoDiv } from './observacao';
 import Modal from 'react-modal'
 import toast from 'react-hot-toast';
 import { pedidoService } from '../../../services';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Textarea } from '@nextui-org/react';
 import { PedidosProps } from '../../../services/pedido';
 
@@ -16,7 +15,6 @@ interface ObservacaoModalProps {
 }
 
 const Observacao: NextPage<ObservacaoModalProps> = ({ isOpen, onRequestClose, pedido }) => {
-  const router = useRouter()
   const [observacao, setObservacao] = useState('')
 
   const handleChangeObsPedido = async (pedido: PedidosProps) => {
@@ -25,7 +23,6 @@ const Observacao: NextPage<ObservacaoModalProps> = ({ isOpen, onRequestClose, pe
     if (!observacaoErrors) {
       onRequestClose()
       toast.success(observacaoData.message ?? 'Observação alterada com sucesso!')
-      router.reload()
     } else {
       toast.error(observacaoErrors.statusText ?? 'Erro ao alterar a observação do pedido.')
     }

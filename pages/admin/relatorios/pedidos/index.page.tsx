@@ -35,6 +35,7 @@ interface Cliente {
 
 const Pedidos: NextPage = () => {
   const [clienteId, setClienteId] = useState('')
+  const [previousClientId, setPreviousClientId] = useState(0)
   const [pedidos, setPedidos] = useState<PedidosProps[]>([])
   const [isOrdersLoading, setIsOrdersLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -45,6 +46,7 @@ const Pedidos: NextPage = () => {
   const [pedido, setPedido] = useState<PedidosProps>({ id: 0, dataCriacao: 0, dataEntrega: 0, valorTotal: 0, status: '', observacao: '', obsCancelamento: '', nome: '', endereco: '', cidade: '', estado: '', telefone: '', isFinalizado: 0 })
 
 
+
   let clientes: Array<Cliente> = [];
 
   const { data, isLoading, isSuccess, isError } = useQuery('clientes', clienteService.listarTodosOsClientesNew, { staleTime: Infinity })
@@ -53,15 +55,27 @@ const Pedidos: NextPage = () => {
     clientes = data.clientes
   }
 
+  const fetchPedidosByClienteOnRequestClose = async () => {
+    const { data, errors } = await pedidoService.listarPedidosByCliente(previousClientId)
+
+    if (!errors) {
+      setIsOrdersLoading(false)
+      setPedidos(data.pedidos)
+      setClienteId('')
+    } else {
+      toast.error('Erro ao listar os pedidos.')
+    }
+  }
+
   const handleClientSelection = async () => {
     setIsOrdersLoading(true)
 
     const idCliente: number = Number(clienteId.split(' ')[0])
+    setPreviousClientId(idCliente)
     
     const { data, errors } = await pedidoService.listarPedidosByCliente(idCliente)
 
     if (!errors) {
-      console.log(data)
       setIsOrdersLoading(false)
       setPedidos(data.pedidos)
       setClienteId('')
@@ -72,22 +86,32 @@ const Pedidos: NextPage = () => {
 
   const onRequestClose = async () => {
     setIsModalOpen(false)
+
+    await fetchPedidosByClienteOnRequestClose()
   }
 
   const onRequestCloseCancelOrder = async () => {
     setIsCancelOrderModalOpen(false)
+
+    await fetchPedidosByClienteOnRequestClose()
   }
 
   const onRequestCloseChangeDate = async () => {
     setIsChangeDateModalOpen(false)
+
+    await fetchPedidosByClienteOnRequestClose()
   } 
 
   const onRequestCloseConfirmOrder = async () => {
     setIsConfirmOrderModalOpen(false)
+
+    await fetchPedidosByClienteOnRequestClose()
   } 
 
   const onRequestCloseObs = async () => {
     setIsModalObsOpen(false)
+
+    await fetchPedidosByClienteOnRequestClose()
   } 
 
   const handleChangeObs = async (pedido: PedidosProps) => {

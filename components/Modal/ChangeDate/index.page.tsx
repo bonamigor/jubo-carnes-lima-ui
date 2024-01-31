@@ -3,7 +3,6 @@ import { Container, Content, Buttons } from './changeDate';
 import Modal from 'react-modal'
 import toast from 'react-hot-toast';
 import { pedidoService } from '../../../services';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import InputMask from "react-input-mask";
 import { PedidosProps } from '../../../services/pedido';
@@ -15,7 +14,6 @@ interface ChangeDateModalProps {
 }
 
 const ChangeDate: NextPage<ChangeDateModalProps> = ({ isOpen, onRequestClose, pedido }) => {
-  const router = useRouter()
   const [dataEntrega, setDataEntrega] = useState('')
   const [isValid, setIsValid] = useState(false)
 
@@ -26,7 +24,6 @@ const ChangeDate: NextPage<ChangeDateModalProps> = ({ isOpen, onRequestClose, pe
     if (!errors) {
       onRequestClose()
       toast.success(data.message ?? 'Data de Entrega alterada com sucesso!')
-      router.reload()
     } else {
       toast.error(errors.statusText ?? 'Erro ao alterar data entrega.')
     }
