@@ -444,7 +444,7 @@ const OrderInfo: NextPage<OrderInfoModalProps> = ({ isOpen, onRequestClose, pedi
           pedidoId: Number(pedido.id),
           itemPedidoId: Number(product.itemPedidoId),
           precoVenda: Number(product.precoVenda),
-          quantidadeAntiga: Number(product.quantidade.replaceAll('.', '').replaceAll(',', '.')),
+          quantidadeAntiga: Number(product.quantidade),
           quantidadeNova: Number(quantidade.replaceAll('.', '').replaceAll(',', '.'))
         })
 
