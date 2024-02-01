@@ -48,8 +48,16 @@ const ItemPedidoService = (httpClient: AxiosInstance) => ({
   },
 
   deletarProdutoDoPedidoById: async (id: string) => {
-    const response = await httpClient.delete(
-      `/api/pedido/${id.split(' ')[1]}/item-pedido/${id.split(' ')[0]}/${id.split(' ')[2].split('.')[0]}/estante-id/${id.split(' ')[3]}/produto-id/${id.split(' ')[4]}`)
+    const pedidoId = id.split(' ')[1]
+    const itemPedidoId = id.split(' ')[0]
+    const quantidade = Number(id.split(' ')[2])
+    const estanteId = id.split(' ')[3]
+    const produtoId = id.split(' ')[4]
+
+    const response = await httpClient.post(
+      `/api/pedido/${pedidoId}/item-pedido/${itemPedidoId}/estante-id/${estanteId}/produto-id/${produtoId}`, {
+        quantidade
+      })
 
     let itemPedidoErrors = null
 

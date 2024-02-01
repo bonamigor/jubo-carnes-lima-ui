@@ -462,14 +462,12 @@ const OrderInfo: NextPage<OrderInfoModalProps> = ({ isOpen, onRequestClose, pedi
 
   const handleDeleteItemPedido = (product: ProductsProps) => {
     setIdItemPedido(`${product.itemPedidoId} ${pedido.id} ${product.quantidade} ${product.estanteId} ${product.produtoId}`)
-    const index = products.findIndex(productInArray => productInArray.itemPedidoId === product.itemPedidoId)
-    delete products[index]
     setIsDeleteItemPedidoModalOpen(true)
   }
 
   const onRequestCloseItemPedidoModal = () => {
     setIsDeleteItemPedidoModalOpen(false)
-	fetchValorTotal()
+    queryClient.invalidateQueries('produtosPedido')
   }
 
   return (
