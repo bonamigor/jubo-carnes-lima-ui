@@ -578,7 +578,7 @@ const OrderInfo: NextPage<OrderInfoModalProps> = ({ isOpen, onRequestClose, pedi
               <CancelSection>
                 <h2>Ou, deseja cancelar o pedido?</h2>
                 <Textarea placeholder='Por quê quer cancelar esse pedido?' onChange={event => setobsCancelamento(event.target.value)} css={{ mt: "1.5rem", w: "400px" }} />
-                <button onClick={cancelOrder} disabled={!(pedido.status === 'CRIADO')}>Cancelar Pedido</button>
+                <button onClick={cancelOrder} disabled={pedido.status !== 'CRIADO'}>Cancelar Pedido</button>
               </CancelSection>
             </>
           ) : (
