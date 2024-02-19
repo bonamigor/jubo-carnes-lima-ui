@@ -91,6 +91,8 @@ const OrderInfo: NextPage<OrderInfoModalProps> = ({ isOpen, onRequestClose, pedi
   const [isUpdateItem, setIsUpdateItem] = useState(false)
   const [previousIndex, setPreviousIndex] = useState(0)
 
+  const isBotaoCancelarDisabled = pedido.status === 'ENTREGUE'
+
   const { data, error, isLoading, isSuccess, isError } = useQuery(['produtosPedido', pedido.id], () => pedidoService.listarProdutosByPedidoId(pedido.id), { refetchOnWindowFocus: false, enabled: isOpen })
 
   let products: Array<ProductsProps> = [];
@@ -578,7 +580,7 @@ const OrderInfo: NextPage<OrderInfoModalProps> = ({ isOpen, onRequestClose, pedi
               <CancelSection>
                 <h2>Ou, deseja cancelar o pedido?</h2>
                 <Textarea placeholder='Por quê quer cancelar esse pedido?' onChange={event => setobsCancelamento(event.target.value)} css={{ mt: "1.5rem", w: "400px" }} />
-                <button onClick={cancelOrder} disabled={pedido.status !== 'CANCELADO' || pedido.status !== 'ENTREGUE'}>Cancelar Pedido</button>
+                <button onClick={cancelOrder} disabled={isBotaoCancelarDisabled}>Cancelar Pedido</button>
               </CancelSection>
             </>
           ) : (
