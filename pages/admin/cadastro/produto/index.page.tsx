@@ -18,6 +18,7 @@ export interface ProdutoProps {
   nome: string;
   preco: string;
   unidade: string;
+  ativo: number; 
 }
 
 const CadastroProduto: NextPage = () => {
@@ -33,6 +34,8 @@ const CadastroProduto: NextPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [postPerPage, setPostsPerPage] = useState(5)
   const [isValid, setIsValid] = useState(false)
+  const [produto, setProduto] = useState<ProdutoProps>()
+  const [isUpdateStatusModalOpen, setIsUpdateStatusModalOpen] = useState(false)
 
   const lastIndex = currentPage * postPerPage;
   const firstIndex = lastIndex - postPerPage;
@@ -114,6 +117,12 @@ const CadastroProduto: NextPage = () => {
 
   const onRequestClose = () => {
     setIsDeleteModalOpen(false)
+    setIsUpdateStatusModalOpen(false)
+  }
+
+  const handleUpdateProductStatus = (produto: ProdutoProps) => {
+    setProduto(produto)
+    setIsUpdateStatusModalOpen(true)
   }
 
   return (
@@ -159,6 +168,7 @@ const CadastroProduto: NextPage = () => {
                   <th>Nome</th>
                   <th>Preço</th>
                   <th>Unidade</th>
+                  <th>Status</th>
                   <th>Ações</th>
                 </tr>
               </thead>
@@ -176,7 +186,9 @@ const CadastroProduto: NextPage = () => {
                           }).format(Number(produto.preco))}
                         </td>
                         <td>{produto.unidade}</td>
+                        <td>{produto.ativo === 1 ? 'ATIVO' : 'DESATIV.'}</td>
                         <td>
+                          <a><Image onClick={() => {handleUpdateProductStatus(produto)}} src={ConfirmImg} alt="Atualizar status do produto" width={30} height={30} /></a>
                           <a><Image onClick={() => prepareUpdate(produto)} src={EditImg} alt="Visualizar" width={30} height={30} /></a>
                           <a><Image onClick={() => handleDeleteProduto(produto)} src={DeleteImg} alt="Confirmar" width={30} height={30} /></a>
                         </td>
@@ -210,6 +222,7 @@ const CadastroProduto: NextPage = () => {
         </TableContainer>
         {produtosPaginados && <Pagination totalPosts={produtos.length} postsPerPage={postPerPage} setCurrentPage={setCurrentPage} />}
         <DeleteModal isOpen={isDeleteModalOpen} onRequestClose={onRequestClose} entity='Produto' id={id} />
+        <UpdateProductStatus isOpen={isUpdateStatusModalOpen} onRequestClose={onRequestClose} produto={produto as ProdutoProps} />
       </Container>
     </>
   )
