@@ -209,6 +209,7 @@ const CadastroProduto: NextPage = () => {
                           }).format(Number(produto.preco))}
                         </td>
                         <td>{produto.unidade}</td>
+                        <td>{produto.ativo === 1 ? 'ATIVO' : 'DESATIV.'}</td>
                         <td>
                           <a><Image onClick={() => prepareUpdate(produto)} src={EditImg} alt="Visualizar" width={30} height={30} /></a>
                           <a><Image onClick={() => handleDeleteProduto(produto)} src={DeleteImg} alt="Confirmar" width={30} height={30} /></a>
