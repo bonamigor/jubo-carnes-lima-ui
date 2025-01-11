@@ -13,6 +13,7 @@ import { useQuery } from "react-query";
 import { Loading } from '@nextui-org/react';
 import Head from "next/head";
 import Pagination from "../../../../components/Pagination/index.page";
+import UpdateProductStatus from "../../../../components/Modal/UpdateProductStatus/index.page"
 
 export interface ProdutoProps {
   id: number;
