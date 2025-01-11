@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Container, Content, FormButton, FormItself, FormSubmitButton, InputFilter, TableContainer } from "./produto";
 import EditImg from '../../../../assets/edit.png'
 import DeleteImg from '../../../../assets/delete.png'
+import ConfirmImg from '../../../../assets/confirm.png'
 import { useState, FormEvent, useEffect } from 'react';
 import { produtoService } from '../../../../services/index';
 import toast from "react-hot-toast";
