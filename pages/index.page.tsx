@@ -65,8 +65,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Paraíso Ribeiro</title>
-        <meta name="description" content="Paraíso Ribeiro p/ Merenda Escolar" />
+        <title>Casa de Carnes Lima</title>
+        <meta name="description" content="Casa de Carnes Lima p/ Merenda Escolar" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeStyle>
@@ -86,7 +86,6 @@ const Home: NextPage = () => {
             <footer>
               <p>Dúvidas?</p>
               <p>(62) 99166-9903 / (62) 3387-4156</p>
-              <p><a href="mailto:paraisodascarnes56@gmail.com">paraisodascarnes56@gmail.com</a></p>
               <p><a href="mailto:casadecarnesribeiro@hotmail.com.br">casadecarnesribeiro@hotmail.com.br</a></p>
             </footer>
           </LeftContent>

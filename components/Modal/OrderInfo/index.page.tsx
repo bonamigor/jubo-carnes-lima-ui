@@ -47,29 +47,11 @@ interface EmpresaProps {
 
 const empresas: Array<EmpresaProps> = [
   {
-    attribute: 'paraiso',
-    displayName: 'Dist. de Alim. Paraíso LTDA',
-    nome: 'Distribuidora de Alimentos Paraíso LTDA',
-    cnpj: '47.443.514/0001-85',
-    endereco: 'Pç. Sebastião Silva, S/N, Sala 1, Qd. 53 Lt. 3, PARAISO, CEP: 75.134-360',
-    cidade: 'Anápolis',
-    estado: 'Goiás'
-  },
-  {
-    attribute: 'supermercado-ribeiro',
-    displayName: 'Supermercado Ribeiro',
-    nome: 'Supermercado Ribeiro',
-    cnpj: '01.761.787/0001-77',
-    endereco: 'Av. Cachoeira Dourada, nº 650, Paraíso, CEP: 75.134-387',
-    cidade: 'Anápolis',
-    estado: 'Goiás'
-  },
-  {
-    attribute: 'sandra-maria',
-    displayName: 'Sandra M. R. Gonçalves',
-    nome: 'Sandra Maria Ribeiro Gonçalves',
-    cnpj: '01.761.787/0001-77',
-    endereco: 'Av. Cachoeira Dourada, nº 650, Paraíso, CEP: 75.134-387',
+    attribute: 'carnes-lima',
+    displayName: 'Casa de Carnes Lima',
+    nome: 'Casa de Carnes Lima LTDA',
+    cnpj: '60.186.869/0001-02',
+    endereco: 'Av. Pedro Ludovico, S/N, Qd. 13, Lt. 25, Sala 01, Jd. Calixto, CEP: 75.134-675',
     cidade: 'Anápolis',
     estado: 'Goiás'
   },

@@ -11,7 +11,7 @@ import UsuarioService from './usuario'
 
 const API_ENVS = {
   local: 'http://localhost:3001',
-  production: 'https://jubo-paraiso-ribeiro-api-production.up.railway.app'
+  production: 'https://jubo-carnes-lima-api-production.up.railway.app'
 }
 
 const httpClient = axios.create({
